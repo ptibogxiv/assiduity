@@ -1,0 +1,30 @@
+# Module label 'ModuleXXXName'
+Module431302Name=Assiduité
+# Module description 'ModuleXXXDesc'
+Module431302Desc=Module des gestion de l'assiduité des adhérents
+
+
+AssiduitySetup=Configuration module d'assiduité
+AssiduityDesc=Ce module permet de suivre l'assiduité des adhérents pour les évènements de l'agenda
+
+AssiduityMenuSess=Assiduité
+AssiduityPresent=Présent
+AssiduityAbsent=Absent
+AssiduityNC=Non concerné
+AssiduityStatut=Statut
+AssiduityStatutbis=Présence
+AssiduityAdd=Enregistrer les présences
+AssiduityTxDesc=Présence actuelle / Présence globale
+Assiduity=Assiduité
+AssiduityTotal=Présence globale
+AssiduityActual=Présence actuelle
+AssiduityMenuList=Liste par évènements
+AssiduityMenuListMember=Liste par adhérents
+AssiduityMenuNew=Saisir les présences
+
+ASSIDUITY_MEMBER_TYPE=Type de membre à pointer
+ASSIDUITY_EVENT=Type d'évènement à vérifier
+ASSIDUITY_EVENT_BEGIN=Date de début de pointage
+Assiduity_Parameter=Paramètres
+CheckIn=Entrée
+CheckOut=Sortie
