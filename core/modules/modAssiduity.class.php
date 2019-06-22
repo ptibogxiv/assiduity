@@ -61,7 +61,7 @@ class modAssiduity extends DolibarrModules {
 		// Module description, used if translation string 'ModuleXXXDesc' not found (where XXX is value of numeric property 'numero' of module)
 		$this->description = "Module Assiduity";
 		// Possible values for version are: 'development', 'experimental', 'dolibarr' or version
-		$this->version = '9.0.4';
+		$this->version = '10.0.0';
 		
 		// Key used in llx_const table to save module status enabled/disabled (where MYMODULE is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
@@ -77,7 +77,7 @@ class modAssiduity extends DolibarrModules {
     $this->depends = array('modAdherent');		// List of modules id that must be enabled if this module is enabled
     $this->requiredby = array();	// List of modules id to disable if this one is disabled
     $this->phpmin = array(5,0);					// Minimum version of PHP required by module
-    $this->need_dolibarr_version = array(4,0);	// Minimum version of Dolibarr required by module
+    $this->need_dolibarr_version = array(8,0);	// Minimum version of Dolibarr required by module
     $this->langfiles = array("assiduity@assiduity");
 
 
