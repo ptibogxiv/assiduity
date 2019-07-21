@@ -183,7 +183,7 @@ print '<tr '.$bc[$var].'><td class="fieldrequired">';
 print $langs->trans("ASSIDUITY_MEMBER_TYPE").'</td><td>';
         $sql = "SELECT p.rowid,p.entity,p.libelle";        
         $sql.= " FROM ".MAIN_DB_PREFIX."adherent_type as p";
-        $sql.= " WHERE  p.entity IN (" . getEntity() . ")";
+        $sql.= " WHERE  p.entity IN (" . getEntity('adherent') . ")";
         
         $result = $db->query($sql);
         if ($result)
