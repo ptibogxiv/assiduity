@@ -37,6 +37,7 @@ require_once DOL_DOCUMENT_ROOT.'/adherents/class/adherent.class.php';
 require_once DOL_DOCUMENT_ROOT.'/adherents/class/adherent_type.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 require_once DOL_DOCUMENT_ROOT.'/comm/action/class/actioncomm.class.php';
+require_once DOL_DOCUMENT_ROOT.'/core/lib/functions.lib.php';
 
 $langs->load("companies");
 $langs->load("members");
@@ -171,6 +172,7 @@ foreach ($member as $mb) {
   
         dol_fiche_head(null, 'card', '', 0, '');
         print '<form enctype="multipart/form-data" action="'.$_SERVER["PHP_SELF"].'" method="post" name="formsoc">';
+        print '<input type="hidden" name="token" value="'.newToken().'">';
         
         print '<SELECT name="event">';  
         
