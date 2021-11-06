@@ -39,13 +39,7 @@ require_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 require_once DOL_DOCUMENT_ROOT.'/comm/action/class/actioncomm.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/functions.lib.php';
 
-$langs->load("companies");
-$langs->load("members");
-$langs->load("users");
-$langs->load("mails");
-$langs->load('other');
-
-$langs->load("assiduity@assiduity");
+$langs->loadLangs(array('companies','members','users','mails','other','assiduity@assiduity'));
 
 $action=GETPOST('action','alpha');
 $confirm=GETPOST('confirm','alpha');
@@ -58,7 +52,7 @@ $result=restrictedArea($user,'adherent',$rowid,'','cotisation');
 
 $object = new Adherent($db);
 $extrafields = new ExtraFields($db);
-$adht = new AdherentType($db);
+//$adht = new AdherentType($db);
 
 // fetch optionals attributes and labels
 $extralabels=$extrafields->fetch_name_optionals_label($object->table_element);
@@ -124,7 +118,7 @@ if (0 == 0)  //affichage ou non de la liste
     $res=$object->fetch($rowid);
     if ($res < 0) { dol_print_error($db,$object->error); exit; }
 
-    $adht->fetch($object->typeid);
+    //$adht->fetch($object->typeid);
 
     $head = assiduity_prepare_head($object);
   
@@ -210,7 +204,7 @@ foreach ($member as $mb) {
         print '</SELECT> et ajout de <input size="5" type="text" name="rewards" value="0"> points<br /><br />';
   
   
-        $sql = "SELECT a.rowid,a.firstname,a.lastname";               
+        $sql = "SELECT a.rowid,a.firstname,a.lastname, a.fk_adherent_type as typeid";               
         $sql.= " FROM ".MAIN_DB_PREFIX."adherent as a";
         $sql.= " WHERE a.statut=1 AND a.fk_adherent_type IN(".$conf->global->ASSIDUITY_MEMBER_TYPE.")";
         $sql.= " AND a.entity IN (" . getEntity('assiduity') . ") ";
@@ -239,14 +233,28 @@ foreach ($member as $mb) {
 
 $assiduity=new Assiduite($db);
 $percenta=$assiduity->fetch_mb_actualassiduity($objp->rowid);               
-                
+
+$adht = new AdherentType($db);
+$adht->fetch($objp->typeid);
+//$extrafields = new ExtraFields($db);
+//$extrafields->fetch_name_optionals_label($adht->table_element);               
                 
                 print "<tr ".$bc[$var].">";
- print '<td>'.$objp->rowid;              
+                print '<td>'.$objp->rowid;              
                 
                 print '</td>';
-                print '<td align="left"><a href="'.$dolibarr_main_url_root.dol_buildpath('/assiduity/card.php?rowid='.$objp->rowid, 1).'">'.img_picto('', 'object_user').' '.$objp->firstname.' '.$objp->lastname.'</a></td>';
-                print '<td align="left"><input type="hidden" id="assiduity" class="flat" name="member['.$objp->rowid.']"  value="'.$objp->rowid.'" ><input type="radio" id="assiduity" class="flat" name="assiduity['.$objp->rowid.']"  value="1" checked> Présent <input type="radio" id="assiduity" class="flat" name="assiduity['.$objp->rowid.']"  value="0"> Absent <input type="radio" id="assiduity" class="flat" name="assiduity['.$objp->rowid.']"  value="2"> NC</td>';                         
+                print '<td align="left"><a href="'.$dolibarr_main_url_root.dol_buildpath('/assiduity/card.php?rowid='.$objp->rowid, 1).'">'.img_picto('', 'object_user').' '.$objp->firstname.' '.$objp->lastname.'</a></td>'; 
+                print '<td align="left"><input type="hidden" id="assiduity" class="flat" name="member['.$objp->rowid.']"  value="'.$objp->rowid.'" >';
+                print '<input type="radio" id="assiduity" class="flat" name="assiduity['.$objp->rowid.']"  value="1"';
+                if ($adht->array_options["options_assiduity_default"] == 1) { print ' checked';}
+                print '> Présent ';
+                print '<input type="radio" id="assiduity" class="flat" name="assiduity['.$objp->rowid.']"  value="0"';
+                if ($adht->array_options["options_assiduity_default"] == 0) { print ' checked';}
+                print '> Absent ';
+                print '<input type="radio" id="assiduity" class="flat" name="assiduity['.$objp->rowid.']"  value="2"';
+                if ($adht->array_options["options_assiduity_default"] == 2) { print ' checked';}
+                print '> NC';
+                print '</td>';                         
                 print '<td align="right">'.$percenta.'%</td>';
                 print "</tr>";
                 $i++;
