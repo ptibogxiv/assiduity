@@ -44,7 +44,7 @@ if ($action == 'setvalue' && $user->admin)
 {
 
 $mydate = dol_mktime(12, 0 , 0, $_POST['beginmonth'], $_POST['beginday'], $_POST['beginyear']);
-$begin=strftime('%Y-%m-%d ', $mydate);
+$begin=strftime('%Y-%m-%d', $mydate);
 
 	$db->begin();
   
