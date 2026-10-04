@@ -75,7 +75,7 @@ class ActionsAssiduity
 			{
 				$this->resprints.= '<tr><td>'.fieldLabel('LinkedToWordpress','linked_entity').'</td><td colspan="3" class="maxwidthonsmartphone">';
 //				$s = $this->select_entities('', 'linked_entity', '', 0, array($conf->entity), true);
-				$this->resprints.= $form->textwithpicto($s,$langs->trans("LinkedToWordpressDesc"),1);
+				$this->resprints.= $form->textwithpicto('',$langs->trans("LinkedToWordpressDesc"),1);
 				$this->resprints.= '</td></tr>';
 			}
 			else
@@ -84,7 +84,7 @@ class ActionsAssiduity
 				$this->resprints.= '<table width="100%" class="nobordernopadding"><tr><td>';
 				$this->resprints.= $langs->trans('Assiduity');
 				$this->resprints.= '<td><td align="right">';
-				$this->resprints.= $form->textwithpicto($s,$langs->trans("AssiduityTxDesc"),1);
+				$this->resprints.= $form->textwithpicto('',$langs->trans("AssiduityTxDesc"),1);
 				$this->resprints.= '</td></tr></table>';
 				$this->resprints.= '</td>';
 				$this->resprints.= '<td colspan="3">';

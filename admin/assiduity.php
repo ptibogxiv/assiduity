@@ -125,14 +125,13 @@ print "</tr>\n";
 $var=!$var;
 print '<tr '.$bc[$var].'><td class="fieldrequired">';
 print $langs->trans("ASSIDUITY_EVENT_BEGIN").'</td><td>';
-if ($conf->global->ASSIDUITY_EVENT_BEGIN) {
-$datefrom=$conf->global->ASSIDUITY_EVENT_BEGIN;
+if (getDolGlobalString("ASSIDUITY_EVENT_BEGIN")) {
+    $datefrom = getDolGlobalString("ASSIDUITY_EVENT_BEGIN");
 }
 else {
-$datefrom=dol_getdate();
+    $datefrom = null;
 }
 print $form->select_date($datefrom,'begin',0,0,0,"myform");
-print ' &nbsp; '.$langs->trans("Example").': ';
 print '</td></tr>';
 
 $var=!$var;
@@ -157,14 +156,11 @@ print $langs->trans("ASSIDUITY_EVENT").'</td><td>';
                 $objp = $db->fetch_object($result);
                 $var=!$var;
                 print "<tr ".$bc[$var].">";
- print '<td><input type="checkbox" id="assiduity_event" class="flat" name="assiduity_event['.$objp->id.']"  value="'.$objp->id.'" ';
- 
- if (in_array($objp->id,explode(",",$conf->global->ASSIDUITY_EVENT))) {
- print ' checked';
- }
-  
- print '>';
-              
+                print '<td><input type="checkbox" id="assiduity_event" class="flat" name="assiduity_event['.$objp->id.']"  value="'.$objp->id.'" ';
+                if (in_array($objp->id,explode(",",getDolGlobalString("ASSIDUITY_EVENT")))) {
+                    print ' checked';
+                }
+                print '>';
                 print '</td>';
                 print '<td align="left">'.$langs->trans($objp->libelle)."</td>";
                 print "</tr>";
@@ -202,7 +198,7 @@ print $langs->trans("ASSIDUITY_MEMBER_TYPE").'</td><td>';
                 print "<tr ".$bc[$var].">";
  print '<td><input type="checkbox" id="assiduity_type" class="flat" name="assiduity_type['.$objp->rowid.']"  value="'.$objp->rowid.'" ';
  
- if (in_array($objp->rowid,explode(",",$conf->global->ASSIDUITY_MEMBER_TYPE))) {
+ if (in_array($objp->rowid,explode(",",getDolGlobalString("ASSIDUITY_MEMBER_TYPE")))) {
  print ' checked';
  }
   

@@ -143,19 +143,19 @@ foreach ($member as $mb) {
   $member = new Adherent($db);
   $member->fetch($mb);      	
   $facture = new Facture($db);
-	$facture->socid = $member->fk_soc;
-	$facture->id = '';
-  $facture->fk_facture_source = $event;
-	$rewards->create($facture, GETPOST('rewards','int'));
+  $facture->socid = $member->fk_soc;
+  $facture->id = '';
+  $facture->element = $evt->element;
+  $rewards->create($facture, GETPOST('rewards','int'));
   } else {
   $rewards = new Rewards($db);
   $member = new Adherent($db);
   $member->fetch($mb);      	
   $facture = new Facture($db);
-	$facture->socid = $member->fk_soc;
-	$facture->id = '';
-  $facture->fk_facture_source = $event;
-	$rewards->create($facture, 0);
+  $facture->socid = $member->fk_soc;
+  $facture->id = '';
+  $facture->element = $evt->element;
+  $rewards->create($facture, 0);
   }
 
     }
@@ -175,6 +175,7 @@ foreach ($member as $mb) {
         $sql.= " WHERE c.fk_action in (".$conf->global->ASSIDUITY_EVENT.")";
         $sql.= " AND c.entity IN (" . getEntity('assiduity') . ") ";
         $sql.= " AND c.datep > '".$conf->global->ASSIDUITY_EVENT_BEGIN."' ";
+        $sql.= " AND c.datep2 <= '".$db->idate(dol_now('gmt'))."' ";
         $sql.= " AND c.id NOT IN (SELECT event_id FROM ".MAIN_DB_PREFIX."adherent_assiduity) ";
         $sql.= " ORDER BY c.datep ASC";
         $sql.= " LIMIT 0,5";

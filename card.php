@@ -373,8 +373,8 @@ if ($rowid > 0)
                 $objp = $db->fetch_object($result);
                 $var=!$var;
                 print "<tr ".$bc[$var].">";
-                $subscriptionstatic->ref=$objp->crowid;
-                $subscriptionstatic->id=$objp->crowid;
+                $subscriptionstatic->ref=$objp->rowid;
+                $subscriptionstatic->id=$objp->rowid;
  print '<td>';
  if ($objp->assiduity=='0')
  {print img_picto($langs->trans('AssiduityAbsent'),'statut8').' '.$langs->trans('AssiduityAbsent');} 
