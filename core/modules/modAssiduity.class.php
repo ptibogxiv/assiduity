@@ -158,9 +158,43 @@ class modAssiduity extends DolibarrModules {
 				'user' => 0
 		);
 
-  }
+  	}
 
+	/**
+	 * Function called when module is enabled.
+	 * Loads sql/*.sql, creates permissions, menus and directories.
+	 *
+	 * @param  string $options Options when enabling module
+	 * @return int             1 if OK, 0 if KO
+	 */
+	public function init($options = '')
+	{
+		global $conf;
 
+		$result = $this->_load_tables('/assiduity/sql/');
+		if ($result < 0) {
+			return -1;
+		}
+
+		// Permissions
+
+		return $this->_init($sql, $options);
+	}
+
+	/**
+	 * Function called when module is disabled.
+	 * Remove from database constants, boxes and permissions from Dolibarr database.
+	 * Data directories are not deleted
+	 *
+	 * @param      string	$options    Options when enabling module ('', 'noboxes')
+	 * @return     int             	1 if OK, 0 if KO
+	 */
+	public function remove($options = '')
+	{
+		$sql = array();
+
+		return $this->_remove($sql, $options);
+	}
 
 }
 
