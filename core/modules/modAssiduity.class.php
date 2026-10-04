@@ -85,13 +85,14 @@ class modAssiduity extends DolibarrModules {
 		
 		// Defined all module parts (triggers, login, substitutions, menus, css, etc...)
 		$this->module_parts = array(
-    'hooks' => array('membercard') 
+			'hooks' => array('membercard') 
 		);
 
         // New pages on tabs
         // -----------------
 		$this->tabs = array(
-				'member:+assiduity:AssiduityMenuSess:assiduity@assiduity:/assiduity/card.php?rowid=__ID__'
+			'member:+assiduity:AssiduityMenuSess:assiduity@assiduity:1:/assiduity/card.php?rowid=__ID__',
+			'action:+assiduity:AssiduityMenuSess:assiduity@assiduity:1:/assiduity/card.php?rowid=__ID__'
 		);
 
         // Boxes
