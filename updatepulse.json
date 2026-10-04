@@ -1,0 +1,12 @@
+{
+   "server": "https://ptibogxiv.eu",
+    "packageData": {
+        "Name": "assiduity",
+        "Version": "2026.0.0",
+        "Homepage": "https://ptibogxiv.eu",
+        "Author": "ptibogxiv",
+        "AuthorURI": "https://ptibogxiv.eu",
+        "Description": "Module Assiduity for Agenda events",
+        "RequireLicense": false
+    }
+}
