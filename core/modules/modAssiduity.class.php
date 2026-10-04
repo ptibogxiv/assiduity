@@ -170,6 +170,8 @@ class modAssiduity extends DolibarrModules {
 	public function init($options = '')
 	{
 		global $conf;
+		        	
+        $sql = array();
 
 		$result = $this->_load_tables('/assiduity/sql/');
 		if ($result < 0) {
